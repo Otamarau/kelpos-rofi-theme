@@ -23,3 +23,6 @@ responsive-waybar.log
 
 # Locally built Waybar widget
 cffi/*.so
+
+# Unreviewed full-monitor captures; publish reviewed named images instead
+screenshots/main-monitor*.png

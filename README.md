@@ -100,7 +100,29 @@ Enable or disable Bluetooth, refresh the known-device list, and select a device 
 
 ## Screenshots
 
-Capture each page with `scripts/capture-rofi.py`; see [capture instructions](screenshots/README.md). Images will be added here as they are captured.
+Captured from the running desktop. Clipboard contents, window titles, Wi-Fi network names and Bluetooth device details are blurred for privacy.
+
+| Applications | Window switcher |
+| --- | --- |
+| ![Application launcher](screenshots/launcher.png) | ![Window switcher with titles blurred](screenshots/windows.png) |
+
+| Clipboard | Screenshot tools |
+| --- | --- |
+| ![Clipboard history with contents blurred](screenshots/clipboard.png) | ![Screenshot menu](screenshots/screenshot-menu.png) |
+
+| Calculator | Power |
+| --- | --- |
+| ![Calculator](screenshots/calculator.png) | ![Power controls](screenshots/power.png) |
+
+| Package sources | Package results |
+| --- | --- |
+| ![Package source selection](screenshots/packages.png) | ![Package search results](screenshots/package-results.png) |
+
+| Bluetooth | Wi-Fi and Ethernet |
+| --- | --- |
+| ![Bluetooth controls with device details blurred](screenshots/bluetooth.png) | ![Wi-Fi picker with network names blurred](screenshots/wifi.png) |
+
+Capture more pages with `scripts/capture-rofi.py`; see [capture instructions](screenshots/README.md).
 
 ## Checks
 
