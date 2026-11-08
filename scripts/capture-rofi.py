@@ -32,8 +32,6 @@ def main():
     if args.delay < 0 or not args.name or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_' for c in args.name):
         parser.error('Use a nonnegative delay and a name containing only letters, numbers, - or _.')
     output = Path(__file__).resolve().parents[1] / 'screenshots' / (args.name + '.png')
-    if output.exists():
-        parser.error(f'{output} already exists; choose a new name.')
     print(f'Capturing {args.monitor} in {args.delay:g} seconds. Open the desired Rofi tab there.', flush=True)
     time.sleep(args.delay)
     monitors = query('monitors')
@@ -61,7 +59,22 @@ def main():
             raise SystemExit('Rofi bounds are outside the selected monitor; no screenshot taken.')
         command += ['-g', f'{x},{y} {width}x{height}']
     output.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(command + [str(output)], check=True)
+    # Reserve a unique name even if two delayed captures finish together.
+    base = output
+    number = 1
+    while True:
+        try:
+            handle = output.open('xb')
+            break
+        except FileExistsError:
+            number += 1
+            output = base.with_name(f'{base.stem}-{number:02d}{base.suffix}')
+    try:
+        with handle:
+            subprocess.run(command + ['-'], stdout=handle, check=True)
+    except BaseException:
+        output.unlink(missing_ok=True)
+        raise
     print(f'Saved {output}')
 
 

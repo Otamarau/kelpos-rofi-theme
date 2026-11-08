@@ -15,7 +15,7 @@ python3 scripts/capture-rofi.py package-details
 python3 scripts/capture-rofi.py power
 ```
 
-The default monitor is `DP-1` (the landscape display in the source desktop configuration). Check `hyprctl monitors` and use `--monitor NAME` if needed. Set `--delay 30` for more time. Existing images are never overwritten.
+The default monitor is `DP-1` (the landscape display in the source desktop configuration). Check `hyprctl monitors` and use `--monitor NAME` if needed. Set `--delay 30` for more time. Repeat the same command for as many captures as you need: existing images are preserved and new captures receive numbered names such as `launcher-02.png`, `launcher-03.png`, and so on.
 
 By default, the helper finds Rofi in Hyprland's layer/window list and captures only its rectangular bounds on the specified monitor. It fails without capturing if it cannot identify exactly one Rofi window there. Run it from a terminal on the other monitor, open Rofi on DP-1, and leave it open until capture completes. Avoid clicking outside a toggle-launched menu because that dismisses it.
 
